@@ -1,0 +1,114 @@
+.hero {
+  --scroll-distance: 0px;
+  min-height: min(840px, 100svh);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* A low-contrast network pattern gives the homepage a technical backdrop
+   without competing with the headline or globe. */
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -12%;
+  pointer-events: none;
+  opacity: 0.62;
+  background-image:
+    radial-gradient(circle at 12% 24%, rgba(236, 32, 44, 0.7) 0 1.5px, transparent 1.9px),
+    radial-gradient(circle at 31% 62%, rgba(236, 32, 44, 0.52) 0 1.5px, transparent 1.9px),
+    radial-gradient(circle at 71% 21%, rgba(236, 32, 44, 0.6) 0 1.5px, transparent 1.9px),
+    radial-gradient(circle at 87% 70%, rgba(236, 32, 44, 0.5) 0 1.5px, transparent 1.9px),
+    linear-gradient(31deg, transparent 49.7%, rgba(236, 32, 44, 0.16) 49.9%, rgba(236, 32, 44, 0.16) 50.1%, transparent 50.3%),
+    linear-gradient(149deg, transparent 49.7%, rgba(236, 32, 44, 0.12) 49.9%, rgba(236, 32, 44, 0.12) 50.1%, transparent 50.3%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 270px 190px, 340px 230px;
+  background-position: center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 48%, transparent 0 26%, rgba(27, 27, 27, 0.4) 74%, #1b1b1b 100%);
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 64px));
+  margin: 0 auto;
+  padding-top: clamp(72px, 13vh, 150px);
+  color: #f5f5f0;
+  font-size: clamp(52px, 8.5vw, 124px);
+  font-weight: 700;
+  letter-spacing: -0.09em;
+  line-height: 0.84;
+  text-align: center;
+  transform: translate3d(0, calc(var(--scroll-distance) * 0.075), 0);
+  will-change: transform;
+}
+
+.accent {
+  color: #ec202c;
+}
+
+.mobileBreak {
+  display: none;
+}
+
+.globe {
+  position: absolute;
+  z-index: 2;
+  top: clamp(178px, 29vh, 270px);
+  left: 50%;
+  width: min(72vw, 760px);
+  aspect-ratio: 1;
+  transform: translate3d(-50%, calc(var(--scroll-distance) * -0.13), 0);
+  will-change: transform;
+}
+
+.globeImage {
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .hero { min-height: min(730px, 100svh); }
+
+  .title {
+    width: min(100% - 40px, 1180px);
+    padding-top: 72px;
+    font-size: clamp(50px, 12vw, 88px);
+  }
+
+  .globe {
+    top: clamp(190px, 33vh, 285px);
+    width: min(113vw, 620px);
+  }
+}
+
+@media (max-width: 520px) {
+  .title {
+    width: calc(100% - 32px);
+    padding-top: 52px;
+    font-size: clamp(45px, 13vw, 64px);
+    text-align: left;
+  }
+
+  .mobileBreak {
+    display: block;
+  }
+
+  .globe {
+    top: 212px;
+    width: 142vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .globe { transform: translate3d(-50%, 0, 0); }
+  .title { transform: none; }
+}
