@@ -1,0 +1,16 @@
+/* Brand typography: Manrope leads; Inter supports reading and interface detail. */
+:root { --heading: "Manrope", Arial, sans-serif; --body: "Inter", Arial, sans-serif; --mono: "Inter", Arial, sans-serif; }
+
+body { font-family: var(--body); }
+h1, h2, h3, h4, h5, h6, .button, .nav a, .logo, .price, .contact-email { font-family: var(--heading); }
+h1 em, h2 em, .pricing-note strong em { font-family: var(--heading); }
+
+.eyebrow, .card-number, .project-category, .process-list span, .industry-list span, .location, .footer-bottom, .footer-links > span, .price small, .pricing-hero-note, .comparison-wrap th, .contact-details strong { font-family: var(--body); }
+
+p, input, textarea, select, .contact-form label, .solution-card p, .project-copy p, .pricing-card li, .pricing-card-top p, .comparison-wrap td, .addons-list strong { font-family: var(--body); }
+
+@media (max-width: 800px) {
+  .site-header { height: 76px; }
+  .nav { top: 75px; }
+  .nav a { font-size: 17px; }
+}
