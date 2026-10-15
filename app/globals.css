@@ -42,7 +42,7 @@ main {
   margin: 0 auto;
 }
 .site-header {
-  height: 82px;
+  height: 100px;
   position: relative;
   z-index: 20;
   background: var(--paper);
